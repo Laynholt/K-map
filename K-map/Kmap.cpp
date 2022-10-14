@@ -47,6 +47,13 @@ _number_of_variables(number_of_variables), _is_colorized(true), _is_math(true)
 			matrix[gray_i * _cols + gray_j] = truth_table_func_values[i * _cols + j];
 		}
 	}
+
+	// Filling alphabelt
+	for (int16_t i = 0; i < number_of_variables; ++i)
+	{
+		alphabelt += ('A' + i);
+	}
+	alphabelt += ((alphabelt.back() >= 'F') ? (alphabelt.back() + 1) : 'F');
 }
 
 kmap::Kmap::Kmap(int16_t number_of_variables, const std::vector<int16_t>& truth_table_values) :_is_sop(true),
@@ -97,8 +104,6 @@ void kmap::Kmap::analize()
 
 void kmap::Kmap::print_truth_table()
 {
-	std::string alphabelt = "ABCDF";
-
 	// Output truth table header
 	std::string out_string = "   ";
 
@@ -130,10 +135,8 @@ void kmap::Kmap::print_truth_table()
 
 void kmap::Kmap::print(bool print_label)
 {
-	std::string alphabelt = "ABCD";
-
-	int16_t variables_in_row = _rows / 2;
-	int16_t variables_in_col = _cols / 2;
+	int16_t variables_in_row = std::log2(_rows);
+	int16_t variables_in_col = std::log2(_cols);
 
 	std::cout << std::setw(_rows) << " ";
 
@@ -228,7 +231,6 @@ void kmap::Kmap::print_groups()
 
 void kmap::Kmap::print_inputted_expression()
 {
-	std::string alphabelt = "ABCD";
 	std::string logical_operators[2] = { " v ", " ^ " };
 	std::string math_operators[2] = { " + ", " " };
 
@@ -293,7 +295,6 @@ void kmap::Kmap::print_inputted_expression()
 
 void kmap::Kmap::print_minimize_expression()
 {
-	std::string alphabelt = "ABCD";
 	std::string logical_operators[2] = { " v ", " ^ " };
 	std::string math_operators[2] = { " + ", " " };
 	std::string prefix, postfix;

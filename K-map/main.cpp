@@ -20,7 +20,7 @@ int main()
 	input_analizer.set_right_border(std::to_string(static_cast<int16_t>(pow(2, number_of_variables) - 1)));
 
 	input_analizer.set_enumerate();
-	input_analizer.set_max_symbols(37);
+	input_analizer.set_max_symbols(38);
 	std::string values = input_analizer.input("Enter SOP(where 1) or POS(where 0) values: ");
 
 	kmap::Kmap map(number_of_variables, type_of_map, values);

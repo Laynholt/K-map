@@ -166,6 +166,7 @@ namespace kmap
 		std::unique_ptr<int16_t[]> matrix;
 		std::vector<Group> groups;
 		std::vector<int16_t> truth_table_func_values;
+		std::string alphabelt;
 
 		int16_t _number_of_variables{};
 		int16_t _rows{};
